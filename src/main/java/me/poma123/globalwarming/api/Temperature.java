@@ -2,7 +2,7 @@ package me.poma123.globalwarming.api;
 
 import javax.annotation.Nonnull;
 
-import org.apache.commons.lang.Validate;
+import org.apache.commons.lang3.Validate;
 
 /**
  * A very simple API that handles the conversion between

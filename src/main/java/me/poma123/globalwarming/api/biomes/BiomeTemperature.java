@@ -2,7 +2,7 @@ package me.poma123.globalwarming.api.biomes;
 
 import javax.annotation.Nonnull;
 
-import org.apache.commons.lang.Validate;
+import org.apache.commons.lang3.Validate;
 
 /**
  * This data type holds biome temperature data for our

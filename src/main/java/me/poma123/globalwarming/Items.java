@@ -26,7 +26,7 @@ public final class Items {
         ItemStack item = new ItemStack(Material.POTION);
         ItemMeta meta = item.getItemMeta();
         ((PotionMeta) meta).setColor(Color.fromRGB(61, 61, 61));
-        meta.addItemFlags(ItemFlag.HIDE_POTION_EFFECTS);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         item.setItemMeta(meta);
 
         CO2_CANISTER = new SlimefunItemStack("CO2_CANISTER", item, "&7CO2 Canister", "", "&8&oCompressed CO2");

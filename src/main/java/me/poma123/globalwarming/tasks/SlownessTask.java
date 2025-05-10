@@ -32,7 +32,7 @@ public class SlownessTask extends MechanicTask {
     }
 
     private void applyEffect(Player p, int duration, int amplifier) {
-        p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, duration, amplifier));
+        p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, duration, amplifier));
     }
 
     @Override
@@ -44,7 +44,7 @@ public class SlownessTask extends MechanicTask {
 
             if (w != null && GlobalWarmingPlugin.getRegistry().isWorldEnabled(w.getName()) && w.getEnvironment() == World.Environment.NORMAL && !w.getPlayers().isEmpty()) {
                 for (Player p : w.getPlayers()) {
-                    if (p.hasPotionEffect(PotionEffectType.SLOW)) {
+                    if (p.hasPotionEffect(PotionEffectType.SLOW_FALLING)) {
                         continue;
                     }
 

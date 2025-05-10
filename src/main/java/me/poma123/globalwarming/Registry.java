@@ -77,11 +77,11 @@ public class Registry {
 
         // Printing missing, unconfigured biomes
         List<String> missingBiomes = new ArrayList<>();
-        for (Biome biome : Biome.values()) {
+        Bukkit.getServer().getRegistry(Biome.class).forEach(biome -> {
             if (!biomeMap.containsKey(biome)) {
                 missingBiomes.add(biome.toString());
             }
-        }
+        });
         if (!missingBiomes.isEmpty()) {
             String path = biomeMap.getKey().getKey().replace("globalwarming_biomemap_", "");
             GlobalWarmingPlugin.getInstance().getLogger().log(Level.WARNING, "Some biomes are missing (unconfigured) from the biome maps file (" + path + "): \"{0}\". These will be used with the default temperature value (temp=15, max-temp-drop-at-night=0).", new Object[] {String.join(", ", missingBiomes)});

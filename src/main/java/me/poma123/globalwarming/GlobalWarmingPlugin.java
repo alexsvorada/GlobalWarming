@@ -103,12 +103,12 @@ public class GlobalWarmingPlugin extends JavaPlugin implements SlimefunAddon {
     }
 
     private void registerItems() {
-        ItemGroup itemGroup = new ItemGroup(new NamespacedKey(this, "global_warming"), new CustomItemStack(Items.THERMOMETER, "&2Global Warming"));
+        ItemGroup itemGroup = new ItemGroup(new NamespacedKey(this, "global_warming"), CustomItemStack.create(Items.THERMOMETER.item(), "&2Global Warming"));
 
         new TemperatureMeter(itemGroup, Items.THERMOMETER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-                SlimefunItems.NICKEL_INGOT, new ItemStack(Material.GLASS), SlimefunItems.NICKEL_INGOT,
-                SlimefunItems.NICKEL_INGOT, Items.MERCURY, SlimefunItems.NICKEL_INGOT,
-                SlimefunItems.NICKEL_INGOT, new ItemStack(Material.GLASS), SlimefunItems.NICKEL_INGOT
+                SlimefunItems.NICKEL_INGOT.item(), new ItemStack(Material.GLASS), SlimefunItems.NICKEL_INGOT.item(),
+                SlimefunItems.NICKEL_INGOT.item(), Items.MERCURY.item(), SlimefunItems.NICKEL_INGOT.item(),
+                SlimefunItems.NICKEL_INGOT.item(), new ItemStack(Material.GLASS), SlimefunItems.NICKEL_INGOT.item()
         }) {
             @Override
             public void tick(Block b) {
@@ -118,9 +118,9 @@ public class GlobalWarmingPlugin extends JavaPlugin implements SlimefunAddon {
         }.register(this);
 
         new TemperatureMeter(itemGroup, Items.AIR_QUALITY_METER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-                SlimefunItems.BILLON_INGOT, SlimefunItems.BILLON_INGOT, SlimefunItems.BILLON_INGOT,
-                SlimefunItems.SOLDER_INGOT, Items.THERMOMETER, SlimefunItems.SOLDER_INGOT,
-                SlimefunItems.SOLDER_INGOT, SlimefunItems.MAGNET, SlimefunItems.SOLDER_INGOT
+                SlimefunItems.BILLON_INGOT.item(), SlimefunItems.BILLON_INGOT.item(), SlimefunItems.BILLON_INGOT.item(),
+                SlimefunItems.SOLDER_INGOT.item(), Items.THERMOMETER.item(), SlimefunItems.SOLDER_INGOT.item(),
+                SlimefunItems.SOLDER_INGOT.item(), SlimefunItems.MAGNET.item(), SlimefunItems.SOLDER_INGOT.item()
         }) {
             @Override
             public void tick(Block b) {
@@ -130,9 +130,9 @@ public class GlobalWarmingPlugin extends JavaPlugin implements SlimefunAddon {
         }.register(this);
 
         new AirCompressor(itemGroup, Items.AIR_COMPRESSOR, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-                SlimefunItems.SOLDER_INGOT, Items.FILTER, SlimefunItems.SOLDER_INGOT,
-                SlimefunItems.ALUMINUM_BRASS_INGOT, SlimefunItems.ELECTRIC_MOTOR, SlimefunItems.ALUMINUM_BRASS_INGOT,
-                SlimefunItems.SOLDER_INGOT, SlimefunItems.BATTERY, SlimefunItems.SOLDER_INGOT
+                SlimefunItems.SOLDER_INGOT.item(), Items.FILTER.item(), SlimefunItems.SOLDER_INGOT.item(),
+                SlimefunItems.ALUMINUM_BRASS_INGOT.item(), SlimefunItems.ELECTRIC_MOTOR.item(), SlimefunItems.ALUMINUM_BRASS_INGOT.item(),
+                SlimefunItems.SOLDER_INGOT.item(), SlimefunItems.BATTERY.item(), SlimefunItems.SOLDER_INGOT.item()
         }) {
             @Override
             public int getEnergyConsumption() {
@@ -151,14 +151,14 @@ public class GlobalWarmingPlugin extends JavaPlugin implements SlimefunAddon {
         }.register(this);
 
         new SlimefunItem(itemGroup, Items.EMPTY_CANISTER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-                null, SlimefunItems.SOLDER_INGOT, null,
-                SlimefunItems.SOLDER_INGOT, new ItemStack(Material.GLASS_BOTTLE), SlimefunItems.SOLDER_INGOT,
-                SlimefunItems.SOLDER_INGOT, SlimefunItems.SOLDER_INGOT, SlimefunItems.SOLDER_INGOT
+                null, SlimefunItems.SOLDER_INGOT.item(), null,
+                SlimefunItems.SOLDER_INGOT.item(), new ItemStack(Material.GLASS_BOTTLE), SlimefunItems.SOLDER_INGOT.item(),
+                SlimefunItems.SOLDER_INGOT.item(), SlimefunItems.SOLDER_INGOT.item(), SlimefunItems.SOLDER_INGOT.item()
         }).register(this);
 
         new SimpleSlimefunItem<ItemConsumptionHandler>(itemGroup, Items.CO2_CANISTER, AirCompressor.RECIPE_TYPE, new ItemStack[] {
                 null, null, null,
-                null, Items.EMPTY_CANISTER, null,
+                null, Items.EMPTY_CANISTER.item(), null,
                 null, null, null
         }) {
             @Override
@@ -171,25 +171,25 @@ public class GlobalWarmingPlugin extends JavaPlugin implements SlimefunAddon {
         new CinnabariteResource().register();
 
         new SlimefunItem(itemGroup, Items.MERCURY, RecipeType.SMELTERY, new ItemStack[]{
-                Items.CINNABARITE, null, null,
+                Items.CINNABARITE.item(), null, null,
                 null, null, null,
                 null, null, null
         }).register(this);
 
         new SlimefunItem(itemGroup, Items.FILTER, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
                 null, new ItemStack(Material.GLASS), null,
-                new ItemStack(Material.GLASS), SlimefunItems.GOLD_PAN, new ItemStack(Material.GLASS),
+                new ItemStack(Material.GLASS), SlimefunItems.GOLD_PAN.item(), new ItemStack(Material.GLASS),
                 null, new ItemStack(Material.GLASS), null
         }).register(this);
     }
 
     private void registerResearches() {
-        registerResearch("thermometer", 69696969, "Thermometer", 10, Items.THERMOMETER);
-        registerResearch("air_quality_meter", 69696970, "Air Quality Meter", 30, Items.AIR_QUALITY_METER);
-        registerResearch("air_compressor", 69696971, "Air Compressor", 40, Items.AIR_COMPRESSOR);
-        registerResearch("canisters", 69696972, "Pollution storing", 6, Items.EMPTY_CANISTER, Items.CO2_CANISTER);
-        registerResearch("filter", 69696973, "Filter", 8, Items.FILTER);
-        registerResearch("mercury", 69696973, "Mercury", 12, Items.CINNABARITE, Items.MERCURY);
+        registerResearch("thermometer", 69696969, "Thermometer", 10, Items.THERMOMETER.item());
+        registerResearch("air_quality_meter", 69696970, "Air Quality Meter", 30, Items.AIR_QUALITY_METER.item());
+        registerResearch("air_compressor", 69696971, "Air Compressor", 40, Items.AIR_COMPRESSOR.item());
+        registerResearch("canisters", 69696972, "Pollution storing", 6, Items.EMPTY_CANISTER.item(), Items.CO2_CANISTER.item());
+        registerResearch("filter", 69696973, "Filter", 8, Items.FILTER.item());
+        registerResearch("mercury", 69696973, "Mercury", 12, Items.CINNABARITE.item(), Items.MERCURY.item());
     }
 
     private void scheduleTasks() {

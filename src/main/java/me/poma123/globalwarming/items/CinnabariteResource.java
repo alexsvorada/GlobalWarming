@@ -41,7 +41,7 @@ public class CinnabariteResource implements GEOResource {
     @Nonnull
     @Override
     public ItemStack getItem() {
-        return Items.CINNABARITE.clone();
+        return Items.CINNABARITE.clone().item();
     }
 
     @Override

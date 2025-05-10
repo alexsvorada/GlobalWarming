@@ -1,7 +1,6 @@
 package me.poma123.globalwarming;
 
 import java.text.DecimalFormat;
-import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,7 +29,7 @@ public class TemperatureManager {
     public static final String HOT = "☀";
     public static final String COLD = "❄";
 
-    private final Map<String, EnumMap<Biome, Double>> worldTemperatureChangeFactorMap = new HashMap<>();
+    private final Map<String, Map<Biome, Double>> worldTemperatureChangeFactorMap = new HashMap<>();
 
     protected void runCalculationTask(long delay, long interval) {
         Bukkit.getScheduler().runTaskTimerAsynchronously(GlobalWarmingPlugin.getInstance(), () -> {
@@ -40,7 +39,7 @@ public class TemperatureManager {
                     World world = Bukkit.getWorld(w);
 
                     if (world != null && !world.getPlayers().isEmpty()) {
-                        EnumMap<Biome, Double> map = new EnumMap<>(Biome.class);
+                        Map<Biome, Double> map = new HashMap<>();
                         boolean isNormalEnvironment = world.getEnvironment() == World.Environment.NORMAL;
 
                         BiomeMap<BiomeTemperature> biomeMap = GlobalWarmingPlugin.getRegistry().getBiomeMap();
@@ -62,7 +61,7 @@ public class TemperatureManager {
         World world = loc.getWorld();
         Biome biome = loc.getBlock().getBiome();
 
-        EnumMap<Biome, Double> map = worldTemperatureChangeFactorMap.get(world.getName());
+        Map<Biome, Double> map = worldTemperatureChangeFactorMap.get(world.getName());
 
         if (map == null) {
             return new Temperature(0);
